@@ -1,10 +1,11 @@
 import express from 'express';
 
 import {authenticate} from '../../middlewares';
+import userlistGet from '../controller/userController';
 
 const router = express.Router();
 
-router.route('/');
+router.route('/').get(userlistGet);
 
 router.get('/token', authenticate);
 
