@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import {NextFunction, Request, Response} from 'express';
-import ErrorResponse from './interfaces/ErrorResponse';
 import CustomError from './classes/CustomError';
+import ErrorResponse from './interfaces/ErrorResponse';
+
 import jwt from 'jsonwebtoken';
-import {OutputUser} from './interfaces/User';
+import {UserOutput} from './interfaces/User';
 import userModel from './api/models/userModel';
 
 const notFound = (req: Request, res: Response, next: NextFunction) => {
@@ -48,7 +49,7 @@ const authenticate = async (
     const userFromToken = jwt.verify(
       token,
       process.env.JWT_SECRET as string
-    ) as OutputUser;
+    ) as UserOutput;
 
     const user = await userModel.findById(userFromToken.id).select('-password');
 
@@ -57,9 +58,9 @@ const authenticate = async (
       return;
     }
 
-    const outputUser: OutputUser = {
+    const outputUser: UserOutput = {
       id: user._id,
-      user_name: user.user_name,
+      username: user.username,
       email: user.email,
       role: user.role,
     };

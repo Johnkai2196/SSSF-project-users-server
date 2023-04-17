@@ -5,8 +5,9 @@ import helmet from 'helmet';
 import cors from 'cors';
 
 import {notFound, errorHandler} from './middlewares';
-import api from './api';
 import MessageResponse from './interfaces/MessageResponse';
+import userRoute from './api/routes/userRoute';
+import authRoute from './api/routes/authRoute';
 
 const app = express();
 
@@ -17,11 +18,12 @@ app.use(express.json());
 
 app.get<{}, MessageResponse>('/', (req, res) => {
   res.json({
-    message: 'API location: /api',
+    message: 'Welcome to the API',
   });
 });
 
-app.use('/api', api);
+app.use('/users', userRoute);
+app.use('/auth', authRoute);
 
 app.use(notFound);
 app.use(errorHandler);

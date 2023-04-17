@@ -10,4 +10,11 @@ interface User extends Document {
   bannerPicture: string | null;
 }
 
-export default User;
+interface UserOutput {
+  id: string;
+  username: string;
+  email: string;
+  role?: 'admin' | 'user';
+}
+
+export {User, UserOutput};
