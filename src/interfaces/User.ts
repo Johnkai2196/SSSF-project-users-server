@@ -6,8 +6,8 @@ interface User extends Document {
   email: string;
   password: string;
   role: 'admin' | 'user';
-  profilePicture: string | null;
-  bannerPicture: string | null;
+  profilePicture: string;
+  bannerPicture: string;
 }
 
 interface UserOutput {
@@ -15,6 +15,8 @@ interface UserOutput {
   username: string;
   email: string;
   role?: 'admin' | 'user';
+  profilePicture?: string;
+  bannerPicture?: string;
 }
 
 export {User, UserOutput};
