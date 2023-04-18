@@ -16,7 +16,9 @@ const login = async (
 ) => {
   try {
     const {username, password} = req.body;
-    const user = await userModel.findOne({email: username});
+    const user = await userModel.findOne({username: username});
+    console.log(user);
+
     if (!user) {
       next(new CustomError('Incorrect username/password', 200));
       return;

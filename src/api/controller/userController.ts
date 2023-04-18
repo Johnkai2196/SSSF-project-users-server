@@ -84,6 +84,7 @@ const userDelete = async (
     const userFromToken = res.locals.user;
 
     const result = await userModel.findByIdAndDelete(userFromToken.id);
+
     if (!result) {
       next(new CustomError('User not found', 404));
       return;
