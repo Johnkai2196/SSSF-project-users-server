@@ -31,6 +31,10 @@ const userModel = new mongoose.Schema<User>({
     type: String,
     default: 'upload string here',
   },
+  bio: {
+    type: String,
+    default: 'Hi i am new here',
+  },
 });
 // Duplicate the ID field.
 userModel.virtual('id').get(function () {

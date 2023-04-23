@@ -8,15 +8,17 @@ interface User extends Document {
   role: 'admin' | 'user';
   profilePicture: string;
   bannerPicture: string;
+  bio: string;
 }
 
 interface UserOutput {
   id: string;
-  username: string;
-  email: string;
+  username?: string;
+  email?: string;
   role?: 'admin' | 'user';
   profilePicture?: string;
   bannerPicture?: string;
+  bio?: string;
 }
 
 export {User, UserOutput};
