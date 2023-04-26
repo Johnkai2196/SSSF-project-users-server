@@ -25,7 +25,7 @@ const userModel = new mongoose.Schema<User>({
   },
   profilePicture: {
     type: String,
-    default: 'upload string here',
+    default: '3ccc63a9283bbe5ae56190b10c5fd456',
   },
   bannerPicture: {
     type: String,
