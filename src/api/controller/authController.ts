@@ -3,7 +3,7 @@ import userModel from '../models/userModel';
 import CustomError from '../../classes/CustomError';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import {UserOutput} from '../../interfaces/User';
+import {User, UserOutput} from '../../interfaces/User';
 import DBMessageResponse from '../../interfaces/DBMessageResponse';
 import LoginMessageResponse from '../../interfaces/LoginMessageResponse';
 
@@ -52,7 +52,7 @@ const login = async (
 };
 // register
 const register = async (
-  req: Request<{}, {}, {username: string; password: string}>,
+  req: Request<{}, {}, User>,
   res: Response,
   next: NextFunction
 ) => {
