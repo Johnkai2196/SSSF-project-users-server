@@ -62,7 +62,7 @@ const userPut = async (
     const response: DBMessageResponse = {
       message: 'User updated',
       user: {
-        username: result.username,
+        user_name: result.user_name,
         email: result.email,
         id: result._id,
       },
@@ -93,7 +93,7 @@ const userDelete = async (
     const response: DBMessageResponse = {
       message: 'User deleted',
       user: {
-        username: result.username,
+        user_name: result.user_name,
         email: result.email,
         id: result._id,
       },
@@ -136,7 +136,7 @@ const userPutAsAdmin = async (
     const response: DBMessageResponse = {
       message: 'user updated',
       user: {
-        username: result.username,
+        user_name: result.user_name,
         email: result.email,
         id: result._id,
       },
@@ -166,7 +166,7 @@ const userDeleteAsAdmin = async (
     const response: DBMessageResponse = {
       message: 'user deleted',
       user: {
-        username: result.username,
+        user_name: result.user_name,
         email: result.email,
         id: result._id,
       },
@@ -192,6 +192,7 @@ const checkToken = async (
 
   res.json(message);
 };
+
 export {
   userlistGet,
   userGet,

@@ -2,7 +2,7 @@ import {Document} from 'mongoose';
 
 // User interface
 interface User extends Document {
-  username: string;
+  user_name: string;
   email: string;
   password: string;
   role: 'admin' | 'user';
@@ -13,8 +13,8 @@ interface User extends Document {
 
 interface UserOutput {
   id: string;
-  username?: string;
-  email?: string;
+  user_name: string;
+  email: string;
   role?: 'admin' | 'user';
   profilePicture?: string;
   bannerPicture?: string;

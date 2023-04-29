@@ -4,9 +4,10 @@ import mongoose from 'mongoose';
 import {User} from '../../interfaces/User';
 
 const userModel = new mongoose.Schema<User>({
-  username: {
+  user_name: {
     type: String,
     required: true,
+    unique: true,
   },
   email: {
     type: String,

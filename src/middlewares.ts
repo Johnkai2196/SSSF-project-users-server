@@ -60,7 +60,7 @@ const authenticate = async (
 
     const outputUser: UserOutput = {
       id: user._id,
-      username: user.username,
+      user_name: user.user_name,
       email: user.email,
       role: user.role,
     };

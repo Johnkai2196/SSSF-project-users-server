@@ -16,7 +16,7 @@ const login = async (
 ) => {
   try {
     const {username, password} = req.body;
-    const user = await userModel.findOne({username: username});
+    const user = await userModel.findOne({user_name: username});
     console.log(user);
 
     if (!user) {
@@ -34,7 +34,7 @@ const login = async (
     );
 
     const userOutput: UserOutput = {
-      username: user.username,
+      user_name: user.user_name,
       email: user.email,
       id: user._id,
     };
@@ -63,7 +63,7 @@ const register = async (
     const response: DBMessageResponse = {
       message: 'User created',
       user: {
-        username: newUser.username,
+        user_name: newUser.user_name,
         email: newUser.email,
         id: newUser._id,
       },
