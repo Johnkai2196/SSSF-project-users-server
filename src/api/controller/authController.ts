@@ -37,6 +37,9 @@ const login = async (
       user_name: user.user_name,
       email: user.email,
       id: user._id,
+      bio: user.bio,
+      bannerPicture: user.bannerPicture,
+      profilePicture: user.profilePicture,
     };
 
     const message: LoginMessageResponse = {
@@ -66,6 +69,9 @@ const register = async (
         user_name: newUser.user_name,
         email: newUser.email,
         id: newUser._id,
+        bio: newUser.bio,
+        bannerPicture: newUser.bannerPicture,
+        profilePicture: newUser.profilePicture,
       },
     };
     res.json(response);

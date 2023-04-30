@@ -65,6 +65,9 @@ const userPut = async (
         user_name: result.user_name,
         email: result.email,
         id: result._id,
+        bio: result.bio,
+        bannerPicture: result.bannerPicture,
+        profilePicture: result.profilePicture,
       },
     };
 
@@ -96,6 +99,9 @@ const userDelete = async (
         user_name: result.user_name,
         email: result.email,
         id: result._id,
+        bannerPicture: result.bannerPicture,
+        profilePicture: result.profilePicture,
+        bio: result.bio,
       },
     };
 
@@ -139,6 +145,9 @@ const userPutAsAdmin = async (
         user_name: result.user_name,
         email: result.email,
         id: result._id,
+        bio: result.bio,
+        bannerPicture: result.bannerPicture,
+        profilePicture: result.profilePicture,
       },
     };
     res.json(response);
@@ -169,6 +178,9 @@ const userDeleteAsAdmin = async (
         user_name: result.user_name,
         email: result.email,
         id: result._id,
+        bannerPicture: result.bannerPicture,
+        profilePicture: result.profilePicture,
+        bio: result.bio,
       },
     };
     res.json(response);

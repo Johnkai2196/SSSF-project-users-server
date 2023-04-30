@@ -16,9 +16,9 @@ interface UserOutput {
   user_name: string;
   email: string;
   role?: 'admin' | 'user';
-  profilePicture?: string;
-  bannerPicture?: string;
-  bio?: string;
+  profilePicture: string;
+  bannerPicture: string;
+  bio: string;
 }
 
 export {User, UserOutput};

@@ -63,6 +63,9 @@ const authenticate = async (
       user_name: user.user_name,
       email: user.email,
       role: user.role,
+      profilePicture: user.profilePicture,
+      bannerPicture: user.bannerPicture,
+      bio: user.bio,
     };
 
     res.locals.user = outputUser;
