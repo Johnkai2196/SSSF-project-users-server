@@ -17,7 +17,6 @@ const login = async (
   try {
     const {username, password} = req.body;
     const user = await userModel.findOne({user_name: username});
-    console.log(user);
 
     if (!user) {
       next(new CustomError('Incorrect username/password', 200));
@@ -63,18 +62,27 @@ const register = async (
     const user = req.body;
     user.password = await bcrypt.hash(user.password, salt);
     const newUser = await userModel.create(user);
-    const response: DBMessageResponse = {
-      message: 'User created',
-      user: {
-        user_name: newUser.user_name,
-        email: newUser.email,
-        id: newUser._id,
-        bio: newUser.bio,
-        bannerPicture: newUser.bannerPicture,
-        profilePicture: newUser.profilePicture,
-      },
+    const token = jwt.sign(
+      {id: newUser._id, role: newUser.role},
+      process.env.JWT_SECRET as string
+    );
+
+    const userOutput: UserOutput = {
+      user_name: newUser.user_name,
+      email: newUser.email,
+      id: newUser._id,
+      bio: newUser.bio,
+      bannerPicture: newUser.bannerPicture,
+      profilePicture: newUser.profilePicture,
     };
-    res.json(response);
+
+    const message: LoginMessageResponse = {
+      message: 'Login successful',
+      token,
+      user: userOutput,
+    };
+
+    res.json(message);
   } catch (error) {
     next(new CustomError('Duplicate entry', 200));
   }

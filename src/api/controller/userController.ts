@@ -114,7 +114,7 @@ const userDelete = async (
 // Admin functions
 // update user as admin
 const userPutAsAdmin = async (
-  req: Request<{}, {}, User>,
+  req: Request<{}, {}, {id: string; user: User}>,
   res: Response<{}, {user: UserOutput}>,
   next: NextFunction
 ) => {
@@ -123,13 +123,16 @@ const userPutAsAdmin = async (
       next(new CustomError('You are not authorized to do this', 401));
       return;
     }
+
     const user = req.body;
-    if (user.password) {
-      user.password = await bcrypt.hash(user.password, salt);
+
+    if (user.user.password) {
+      user.user.password = await bcrypt.hash(user.user.password, salt);
     }
+    console.log(user);
 
     const result = await userModel
-      .findByIdAndUpdate(user.id, user, {
+      .findByIdAndUpdate(user.id, user.user, {
         new: true,
       })
       .select('-password -role');
@@ -167,6 +170,7 @@ const userDeleteAsAdmin = async (
       next(new CustomError('You are not authorized to do this', 401));
       return;
     }
+
     const result = await userModel.findByIdAndDelete(req.params.id);
     if (!result) {
       next(new CustomError('User not found', 404));
