@@ -3,8 +3,7 @@ import userModel from '../models/userModel';
 import CustomError from '../../classes/CustomError';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import {User, UserOutput} from '../../interfaces/User';
-import DBMessageResponse from '../../interfaces/DBMessageResponse';
+import {User, UserRole} from '../../interfaces/User';
 import LoginMessageResponse from '../../interfaces/LoginMessageResponse';
 
 const salt = bcrypt.genSaltSync(12);
@@ -32,13 +31,14 @@ const login = async (
       process.env.JWT_SECRET as string
     );
 
-    const userOutput: UserOutput = {
+    const userOutput: UserRole = {
       user_name: user.user_name,
       email: user.email,
       id: user._id,
       bio: user.bio,
       bannerPicture: user.bannerPicture,
       profilePicture: user.profilePicture,
+      role: user.role,
     };
 
     const message: LoginMessageResponse = {
@@ -67,13 +67,14 @@ const register = async (
       process.env.JWT_SECRET as string
     );
 
-    const userOutput: UserOutput = {
+    const userOutput: UserRole = {
       user_name: newUser.user_name,
       email: newUser.email,
       id: newUser._id,
       bio: newUser.bio,
       bannerPicture: newUser.bannerPicture,
       profilePicture: newUser.profilePicture,
+      role: newUser.role,
     };
 
     const message: LoginMessageResponse = {
