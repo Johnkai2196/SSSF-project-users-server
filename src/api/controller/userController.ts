@@ -10,7 +10,7 @@ const salt = bcrypt.genSaltSync(12);
 // Get all users
 const userlistGet = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const users = await userModel.find().select('-password -role');
+    const users = await userModel.find().select('-password');
     res.json(users);
   } catch (error) {
     next(new CustomError((error as Error).message, 500));
@@ -23,9 +23,7 @@ const userGet = async (
   next: NextFunction
 ) => {
   try {
-    const user = await userModel
-      .findById(req.params.id)
-      .select('-password -role');
+    const user = await userModel.findById(req.params.id).select('-password');
     if (!user) {
       next(new CustomError('User not found', 404));
       return;
