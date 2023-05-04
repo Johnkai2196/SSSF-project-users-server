@@ -1,7 +1,7 @@
 import {NextFunction, Request, Response} from 'express';
 import CustomError from '../../classes/CustomError';
 import userModel from '../models/userModel';
-import {UserOutput, User} from '../../interfaces/User';
+import {UserOutput, User, UserRole} from '../../interfaces/User';
 import bcrypt from 'bcryptjs';
 import DBMessageResponse from '../../interfaces/DBMessageResponse';
 
@@ -194,7 +194,7 @@ const userDeleteAsAdmin = async (
 //check if a token is valid
 const checkToken = async (
   req: Request,
-  res: Response<{}, {user: UserOutput}>,
+  res: Response<{}, {user: UserRole}>,
   next: NextFunction
 ) => {
   const userFromToken = res.locals.user;

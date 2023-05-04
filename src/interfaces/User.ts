@@ -20,5 +20,13 @@ interface UserOutput {
   bannerPicture: string;
   bio: string;
 }
-
-export {User, UserOutput};
+interface UserRole {
+  id: string;
+  user_name: string;
+  email: string;
+  role: 'admin' | 'user';
+  profilePicture: string;
+  bannerPicture: string;
+  bio: string;
+}
+export {User, UserOutput, UserRole};
